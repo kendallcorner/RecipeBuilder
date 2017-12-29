@@ -1,4 +1,4 @@
-from HTMLParser import HTMLParser
+from html.parser import HTMLParser
 from RecipeHTMLtags import *
 
 
@@ -61,22 +61,22 @@ class Recipe():
         self.source = source
 
     def show(self):
-        print self.title
-        print self.ingredients
-        print self.instructions
-        print self.time
-        print self.serves
-        print self.picture
-        print self.source
+        print (self.title)
+        print (self.ingredients)
+        print (self.instructions)
+        print (self.time)
+        print (self.serves)
+        print (self.picture)
+        print (self.source)
 
 
 # instantiate the parser and feed it some HTML
 recipeBuilder = MyRecipeBuilder(tagsDatabase, "testurl.com")
 
 with open('recipe.html', 'r') as htmlfile:
-    htmldata = htmlfile.readlines()
+    htmldata = htmlfile.read()
 
-recipeBuilder.feed(unicode(htmldata))
+recipeBuilder.feed(htmldata)
 
 newRecipe = recipeBuilder.buildRecipe()
 
